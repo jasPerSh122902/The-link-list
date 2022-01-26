@@ -1,6 +1,2 @@
 ﻿  Link-list.cpp
-C:\Users\s218005\Documents\GitHub\The-bouble-link-list\Link-list\Link-list\List.h(10,2): error C2143: syntax error: missing ';' before '~'
-C:\Users\s218005\Documents\GitHub\The-bouble-link-list\Link-list\Link-list\List.h(11): message : see reference to class template instantiation 'List<T>' being compiled
-C:\Users\s218005\Documents\GitHub\The-bouble-link-list\Link-list\Link-list\List.h(9,1): error C2652: 'List<T>': illegal copy constructor: first parameter must not be a 'List<T>'
-C:\Users\s218005\Documents\GitHub\The-bouble-link-list\Link-list\Link-list\Literator.h(8,16): error C2065: 'T': undeclared identifier
-C:\Users\s218005\Documents\GitHub\The-bouble-link-list\Link-list\Link-list\Literator.h(8,11): error C2923: 'Node': 'T' is not a valid template type argument for parameter 'T'
+  Link-list.vcxproj -> C:\Users\s218005\Documents\GitHub\The-bouble-link-list\Link-list\Debug\Link-list.exe
