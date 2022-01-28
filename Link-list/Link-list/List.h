@@ -15,22 +15,23 @@ public:
 	List();
 	List(const List<T>&);
 	~List();
-	void destroy();
-	Iterator<T> begin()const;
-	Iterator<T> end()const;
-	 bool contain(const T object)const;
-	void pushFront(const T& value);
-	void pushBack(const T& value);
+	void destroy();//deletes all nodes in the list
+	Iterator<T> begin()const;//returns an iterator pointing to the first node in the list
+	Iterator<T> end()const;// returns the next item after the last node in the list
+	 bool contain(const T object)const;//checks to see if the given item is in the list
+	void pushFront(const T& value);//adds a new node to the beginning of the list
+	void pushBack(const T& value);//adds a new node to the end of the list
 	bool insert(const T& value, int
-		index);
-	bool remove(const T& value);
-	 void print()const;
-	void initialize();
-	 bool isEmpty()const;
-	bool getData(Iterator<T>& iter, int index);
-	int getLength()const;
+		index);//adds a new node at the given index
+	bool remove(const T& value);//remove all nodes with the given value
+	 void print()const;//prints the values for all the nodes
+	void initialize();//set the default values for the first node pointer, the last node pointer, and the node count
+	 bool isEmpty()const;// returns whether or not the list has any nodes in it
+	bool getData(Iterator<T>& iter, int index);//sets the given iterator to point to a node at the given index
+	int getLength()const;//returns the amount of nodes in the list
 	const List<T>& operator =(const List<T>& otherList);
 	void sort();
+
 
 };
 
@@ -39,7 +40,11 @@ template<typename T>
 inline List<T>::List()
 {
 	m_first = nullptr;
+	//exparemental the thing behind first is null
+	m_first->previous = NULL;
 	m_last = nullptr;
+	//exparemental (meant to say that the next thing will be null
+	m_last->next = NULL;
 	m_nodeCount = 0;
 }
 
@@ -54,32 +59,29 @@ inline List<T>::~List()
 	delete m_last;
 }
 
-
-//there is a error on the Node delete
 template<typename T>
 inline void List<T>::destroy()
 {
-	for (int i = m_first; i <= m_last; i++)
+	for (Node<int>* m_nodeCount = m_first; m_nodeCount >  m_last; m_nodeCount++)
 	{
-		delete m_nodeCount;
-	}
+		m_nodeCount = m_first->next;
+		delete m_first;}
+
+	initialize();
 }
 
-//makes the iterator pointer equal to the first.
 template<typename T>
 inline Iterator<T> List<T>::begin() const
 {
-	Iterator<T>* m_iteratorPointer = new Iterator<T>;
-	m_iteratorPointer->operator==(m_first);
-	return m_first;
+	//Iterator<T>* m_iteratorPointer =new Iterator<T>;
+	return /**m_iteratorPointer =*/ m_first;//makes the iterator pointer equal to the first.
+
 }
 
 template<typename T>
 inline Iterator<T> List<T>::end() const
 {
-	Iterator<T>* m_iteratorPointer = new Iterator<T>;
-	m_iteratorPointer->operator-- == m_last;
-	return m_last;
+	return m_last->next;
 }
 
 template<typename T>
@@ -94,34 +96,42 @@ inline bool List<T>::contain(const T object) const
 template<typename T>
 inline void List<T>::pushFront(const T& value)
 {
-	//T* next;
-	//T* previous;
-	//can i add pointer here
-	value = m_first
+	//Node<T>* next;
+	//Node<T>* previous;
+	//m_first->previous == &(Node<int>)value;
+	Node<int> *node = new Node<int>(value);
+	m_first->previous = node;
+	node->next = m_first;
+	m_first = node;
 }
 
 template<typename T>
 inline void List<T>::pushBack(const T& value)
 {
-	//T* next;
-	//T* previous;
-	//can i add pointer here
-	for (value = index; value)
-
+	//Node<T>* next;
+	//Node<T>* previous;
+	//m_last->next == &(Node<int>)value;
+	Node<int>* node = new Node<int>(value);
+	m_last->next = node;
+	node->previous = m_last;
+	m_last = node;
 }
 
+//add a if statment that allos for push back and push front to be seperat.
 template<typename T>
 inline bool List<T>::insert(const T& value, int index)
 {
 	index = m_nodeCount;
 	//can i add pointer here 
 
+	
+
 	//is it a while loop or a for loop
 	for (int i = value; i <= index; i++)
 	{
 		//also this needs some work
-		pushBack(value[i]);
-		pushFront(value[i]);
+		pushBack(value);
+		pushFront(value);
 	}
 	return false;
 
@@ -154,55 +164,59 @@ inline bool List<T>::remove(const T& value)
 	//Set the old array to the new array
 	if (actorRemoved)//if actor removed == true
 	{
-		//I dont havbe a arrya that can be used that is m_items
-		//need to make a m_items or somthing taht is like it
-		//delet pushFront();
+		//I dont have a arry that can be used that is m_items
+		//need to make a m_items or somthing that is like it
+		//delete pushFront();
 		//delete pushBack();
-		delete[] m_items;//delets the items array 
-		m_items = newArray;//set the items to the new array
+
+		delete m_first;//delets the items array 
+		*m_first = *newArray;//set the items to the new array
 		m_nodeCount--;//decrement length
 	}
 	//Return whether or not the removal was successful
 	return actorRemoved;
 }
 
-//change this but yes there are errors
+// there are errors
 template<typename T>
 inline void List<T>::print() const
 {
-	for (int i = 0; i < m_nodeCount; i++)
-		std::cout << m_nodeCount->getItem(i) << std::endl;
+	//The iter pointer may not work do figure this out
+	for (Iterator<int> iter = begin(); iter != end(); iter++)
+		std::cout << *iter << std::endl;
 }
 
+//there are errors
 template<typename T>
 inline void List<T>::initialize()
 {
 	//question here about how to set the m_first to the node coutner 
-	m_first == m_nodeCount[1];//set the m_fiest to the node counter at the index of 1
+	m_first = m_nodeCount;	//set the m_fiest to the node counter at the index of 1
 	for (m_nodeCount = 1; m_nodeCount == getLength(); m_nodeCount++)
 	{
 		//questioin is this corrent and if yes ask if there is a better way of doing this...
-		m_last == m_nodeCount;//set the m_last to the last node counter index 
+		m_last = m_nodeCount;//set the m_last to the last node counter index 
 	}
 }
 
-//there is errors
 template<typename T>
 inline bool List<T>::isEmpty() const
 {
-	if (m_first == nullptr && m_last = nullptr)
-		return false;
+	for (Iterator<int> iter = begin(); iter != end(); iter++)
+	{
+		if (iter == nullptr || iter == NULL)
+			return false;}
 	return true;
 }
 
+//needs work I think
 template<typename T>
 inline bool List<T>::getData(Iterator<T>& iter, int index)
 {
-	for (index = 1; index < getLength(); index++)
+	for (int i = 1; i < index; i++)
 	{
-		iter == index;
-		return iter;
-	}
+		index = i;
+		return index;}
 	return false;
 }
 
@@ -212,10 +226,11 @@ inline int List<T>::getLength() const
 	return m_nodeCount;
 }
 
+//needs ajustment
 template<typename T>
 inline const List<T>& List<T>::operator=(const List<T>& otherList)
 {
-	// TODO: insert return statement here
+	return List(otherList);
 }
 
 //error on the c and d
@@ -238,7 +253,4 @@ inline void List<T>::sort()
 			}
 		}
 	}
-	cout << "Sorted Element List ...\n";
-	for (c = 0; c < 4; c++)
-		cout << m_nodeCount[c] << "\t";
 }

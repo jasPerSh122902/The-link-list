@@ -32,26 +32,31 @@ inline Iterator<T>::Iterator(Node<T>* node)
 template<typename T>
 inline Iterator<T> Iterator<T>::operator++()
 {
-	return Iterator<T>( Iterator + 1);
+	return Iterator<T>( m_current->next);
 }
 
 template<typename T>
 inline Iterator<T> Iterator<T>::operator--()
 {
-	return Iterator<T>(Iterator - 1);
+	return Iterator<T>(m_current->previous);
 }
 
 template<typename T>
 inline const bool Iterator<T>::operator==(const Iterator<T>& iter)
 {
-	if (&iter == Iterator)
-		return;
+	/*if ((int)&iter == m_current->data)
+		return;*/
+	if (Iterator(m_current) == iter)
+			return;
 }
 
 template<typename T>
 inline const bool Iterator<T>::operator!=(const Iterator<T>& iter)
 {
-	if (&iter != iterator)
+	/*if ((int)&iter != m_current->data)
+		return;*/
+
+	if (Iterator(m_current) != iter)
 		return;
 }
 
