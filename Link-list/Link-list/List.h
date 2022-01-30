@@ -55,17 +55,17 @@ inline List<T>::List(const List<T>&)
 template<typename T>
 inline List<T>::~List()
 {
-	delete m_first;
-	delete m_last;
+	destroy();
 }
 
 template<typename T>
 inline void List<T>::destroy()
 {
-	for (Node<int>* m_nodeCount = m_first; m_nodeCount >  m_last; m_nodeCount++)
+	for (Node<int>* m_nodeCount = m_first; m_nodeCount !=  nullptr;)
 	{
-		m_nodeCount = m_first->next;
-		delete m_first;}
+		Node<T>* tempNode = m_nodeCount;
+		m_nodeCount = m_nodeCount->next;
+		delete tempNode;}
 
 	initialize();
 }
@@ -73,9 +73,7 @@ inline void List<T>::destroy()
 template<typename T>
 inline Iterator<T> List<T>::begin() const
 {
-	//Iterator<T>* m_iteratorPointer =new Iterator<T>;
-	return /**m_iteratorPointer =*/ m_first;//makes the iterator pointer equal to the first.
-
+	return m_first;
 }
 
 template<typename T>
@@ -87,9 +85,12 @@ inline Iterator<T> List<T>::end() const
 template<typename T>
 inline bool List<T>::contain(const T object) const
 {
-	if (!object || m_nodeCount <= 0)
-		return false;
-	return true;
+	for (Iterator<T> iter = begin(); iter != end(); ++iter)
+	{
+		if (*iter == object)
+			return true;
+	}
+	return false;
 }
 
 //error but did not start this one
@@ -100,9 +101,12 @@ inline void List<T>::pushFront(const T& value)
 	//Node<T>* previous;
 	//m_first->previous == &(Node<int>)value;
 	Node<int> *node = new Node<int>(value);
+	
 	m_first->previous = node;
 	node->next = m_first;
 	m_first = node;
+	
+	m_nodeCount++;
 }
 
 template<typename T>
@@ -115,6 +119,8 @@ inline void List<T>::pushBack(const T& value)
 	m_last->next = node;
 	node->previous = m_last;
 	m_last = node;
+	
+	m_nodeCount++;
 }
 
 //add a if statment that allos for push back and push front to be seperat.
@@ -205,8 +211,8 @@ inline bool List<T>::isEmpty() const
 	for (Iterator<int> iter = begin(); iter != end(); iter++)
 	{
 		if (iter == nullptr || iter == NULL)
-			return false;}
-	return true;
+			return true;}
+	return false;
 }
 
 //needs work I think
