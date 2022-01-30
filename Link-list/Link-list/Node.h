@@ -22,4 +22,6 @@ template<typename T>
 inline Node<T>::Node(T value)
 {
 	value = data;
+	next = nullptr;
+	previous = nullptr;
 }
