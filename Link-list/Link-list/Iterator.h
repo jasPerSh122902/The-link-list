@@ -21,12 +21,13 @@ private:
 template<typename T>
 inline Iterator<T>::Iterator()
 {
+	m_current = nullptr;
 }
 
 template<typename T>
 inline Iterator<T>::Iterator(Node<T>* node)
 {
-	node = m_current;
+	m_current = node;
 }
 
 template<typename T>
@@ -44,25 +45,20 @@ inline Iterator<T> Iterator<T>::operator--()
 template<typename T>
 inline const bool Iterator<T>::operator==(const Iterator<T>& iter)
 {
-	/*if ((int)&iter == m_current->data)
-		return;*/
-	if (Iterator(m_current) == iter)
-			return;
+	return if (iter.m_current == m_current);
+			//return;
 }
 
 template<typename T>
 inline const bool Iterator<T>::operator!=(const Iterator<T>& iter)
 {
-	/*if ((int)&iter != m_current->data)
-		return;*/
-
-	if (Iterator(m_current) != iter)
-		return;
+	return if (iter.m_current != m_current);
+		//return;
 }
 
 //This is on hold for now
 template<typename T>
 inline T Iterator<T>::operator*()
 {
-	return T();
+	return m_current->data;
 }
