@@ -4,9 +4,7 @@
 #include <iostream>
 using namespace std;
 template <typename T>
-
-class List
-{
+class List {
 private:
 	Node<T>* m_first;
 	Node<T>* m_last;
@@ -31,26 +29,29 @@ public:
 	int getLength()const;//returns the amount of nodes in the list
 	const List<T>& operator =(const List<T>& otherList);
 	void sort();
-
-
 };
 
 //the basic constructor for the list
 template<typename T>
 inline List<T>::List()
 {
-	m_first = nullptr;
+	initialize();
+	//m_first = nullptr;
 	//exparemental the thing behind first is null
-	m_first->previous = NULL;
-	m_last = nullptr;
+	//m_first->previous = NULL;
+	//m_last = nullptr;
 	//exparemental (meant to say that the next thing will be null
-	m_last->next = NULL;
-	m_nodeCount = 0;
+	//m_last->next = NULL;
+	//m_nodeCount = 0;
 }
 
 template<typename T>
-inline List<T>::List(const List<T>&)
-{}
+inline List<T>::List(const List<T>& otherList)
+{
+	m_first = otherList.m_first;
+	m_lastN = otherList.m_last;
+	m_nodeCount = otherList.m_nodeCount;
+}
 
 template<typename T>
 inline List<T>::~List()
@@ -65,7 +66,8 @@ inline void List<T>::destroy()
 	{
 		Node<T>* tempNode = m_nodeCount;
 		m_nodeCount = m_nodeCount->next;
-		delete tempNode;}
+		delete tempNode;
+	}
 
 	initialize();
 }
@@ -127,19 +129,22 @@ inline void List<T>::pushBack(const T& value)
 template<typename T>
 inline bool List<T>::insert(const T& value, int index)
 {
-	index = m_nodeCount;
-	//can i add pointer here 
+	if (index >= 0 || index < m_nodeCount) 
+		return false;
 
+	Node<T>* newNode(data);
+	if(index == 0)
+		pushFront(data);
+	else if(index == m_nodeCount)
+		pushback(data);
+
+	Node<T>* m_nodePointer;
 	
-
-	//is it a while loop or a for loop
-	for (int i = value; i <= index; i++)
-	{
-		//also this needs some work
-		pushBack(value);
-		pushFront(value);
-	}
-	return false;
+	for(int i = 0; i < index; i++)
+		m_nodePointer = currentNode->next;
+	newNode->next = m_nodePointer;
+	m_nodePointer->previous->next = newNode;
+	m_nodePointer->previous = next;
 
 }
 
@@ -147,7 +152,7 @@ template<typename T>
 inline bool List<T>::remove(const T& value)
 {
 	//Check to see if the actor was null
-	if (!value || getLength() <= 0)
+	if (!value  || getLength() <= 0)
 		return false;
 
 	bool actorRemoved = false;
