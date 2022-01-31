@@ -213,8 +213,23 @@ template<typename T>
 inline void List<T>::print() const
 {
 	//The iter pointer may not work do figure this out
-	for (Iterator<int> iter = m_first; iter != m_last; iter.operator++())
-		std::cout << *iter << std::endl;
+	for (int i = 0; i < m_nodeCount; i++)
+	{
+		Iterator<int> iter = m_first;
+		if ( iter != m_last)
+		{
+			std::cout << *iter << std::endl;
+			iter.operator++();
+		}
+		
+	}
+	//bool printTrue = true;
+	//if (printTrue = true) {
+	//	Iterator<int> iter = m_first;
+	//std::cout <<*iter << std::endl;
+	//printTrue = false;
+	//}
+	
 }
 
 //there are errors
@@ -258,7 +273,7 @@ inline int List<T>::getLength() const
 template<typename T>
 inline const List<T>& List<T>::operator=(const List<T>& otherList)
 {
-	destroy();//Clears this list
+	//destroy();//Clears this list
 	m_first = otherList.m_first; //Sets this list's first node to be the other list's first node
 	m_last = otherList.m_last; //Sets this list's last node to be the other list's last node
 	m_nodeCount = otherList.m_nodeCount; //Sets the node count to be equal to the other list's node count

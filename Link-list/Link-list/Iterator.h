@@ -45,7 +45,7 @@ inline Iterator<T> Iterator<T>::operator--()
 template<typename T>
 inline const bool Iterator<T>::operator==(const Iterator<T>& iter)
 {
-	if (iter.m_current == m_current)
+	if (m_current == iter.m_current)
 		return true;
 	return false;
 }
@@ -53,7 +53,7 @@ inline const bool Iterator<T>::operator==(const Iterator<T>& iter)
 template<typename T>
 inline const bool Iterator<T>::operator!=(const Iterator<T>& iter)
 {
-	if (iter.m_current != m_current)
+	if (m_current != iter.m_current)
 		return true;
 	return false;
 }
