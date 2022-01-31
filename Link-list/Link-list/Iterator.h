@@ -45,15 +45,17 @@ inline Iterator<T> Iterator<T>::operator--()
 template<typename T>
 inline const bool Iterator<T>::operator==(const Iterator<T>& iter)
 {
-	return if (iter.m_current == m_current);
-			//return;
+	if (iter.m_current == m_current)
+		return true;
+	return false;
 }
 
 template<typename T>
 inline const bool Iterator<T>::operator!=(const Iterator<T>& iter)
 {
-	return if (iter.m_current != m_current);
-		//return;
+	if (iter.m_current != m_current)
+		return true;
+	return false;
 }
 
 //This is on hold for now
