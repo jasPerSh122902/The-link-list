@@ -56,13 +56,15 @@ inline List<T>::~List()
 template<typename T>
 inline void List<T>::destroy()
 {
+	Node<int>* currentNode = m_first;
+	Node<T>* nextNode;
 	//makes nodecount = to first and if node counter is not null
-	for (Node<int>* m_nodeCount = m_first; m_nodeCount != nullptr;)
+	for (int i = 0; i < getLength(); i++;)
 	{
 		//makes a temp node and assigns it the node count
-		Node<T>* tempNode = m_nodeCount;
-		m_nodeCount = m_nodeCount->next; // maes node count = to the next
-		delete tempNode; // delete that temp node
+		nextNode = currentNode->nextNode;
+		delete currentNode; // delete that temp node
+		currentNode = nextNode;
 	}
 	initialize();
 }
@@ -70,13 +72,15 @@ inline void List<T>::destroy()
 template<typename T>
 inline Iterator<T> List<T>::begin() const
 {
-	return m_first;
+	Iterator<T> iterator(m_first); //Creates an iterator that points at the first node
+	return iterator;
 }
 
 template<typename T>
 inline Iterator<T> List<T>::end() const
 {
-	return m_last;//return a null
+	Iterator<T> iterator(m_last); //Creates an iterator that points at the first node
+	return iterator;
 }
 
 template<typename T>
@@ -94,6 +98,24 @@ inline bool List<T>::contain(const T object) const
 template<typename T>
 inline void List<T>::pushFront(const T& value)
 {
+	Node<T>* newNode = new Node<T>(data); //Creates a new node with the given data
+	
+	if (m_nodeCount == 0) {
+		m_firstNode = newNode;
+		m_lastNode = newNode;
+	}
+	else if (m_nodeCount == 1) {
+		m_firstNode = newNode;
+		m_firstNode->nextNode = m_lastNode;
+		m_lastNode->previousNode = m_firstNode;
+	}
+	else {
+		//Sets the current first node's previous to be the new node, and then sets the first node to point at the new node
+		m_firstNode->previousNode = newNode;
+		newNode->nextNode = m_firstNode;
+		m_firstNode = newNode;
+	}
+	m_nodeCount++;
 	//Node<T>* next;
 	//Node<T>* previous;
 	//m_first->previous == &(Node<int>)value;
@@ -110,6 +132,23 @@ inline void List<T>::pushFront(const T& value)
 template<typename T>
 inline void List<T>::pushBack(const T& value)
 {
+	Node<T>* newNode = new Node<T>(data); //Creates a new node with the given data
+
+	if (m_nodeCount == 0) {
+		m_firstNode = newNode;
+		m_lastNode = newNode;
+	}
+	else if (m_nodeCount == 1) {
+		m_lastNode = newNode;
+		m_firstNode->nextNode = m_lastNode;
+		m_lastNode->previousNode = m_firstNode;
+	}
+	else {
+		//Sets the current first node's previous to be the new node, and then sets the first node to point at the new nodenewNode->previousNode = m_lastNode;
+		m_lastNode->nextNode = newNode;
+		m_lastNode = newNode;
+	}	
+	m_nodeCount++;
 	//Node<T>* next;
 	//Node<T>* previous;
 	//m_last->next == &(Node<int>)value;
@@ -128,13 +167,15 @@ inline bool List<T>::insert(const T& value, int index)
 {
 	if (index >= 0 || index < m_nodeCount) 
 		return false;
-	Node<T> newNode(value);
-	Node<T>* m_nodePointer;
-	Node<T> currentNode;
+	Node<T>* newNode = new Node<T>(value);
+	
 	if(index == 0)
 		pushFront(value);
+	
 	else if(index == m_nodeCount)
 		pushBack(value);
+	
+	Node<T>* nodeAtIndex = m_firstNode;
 	
 	for (int i = 0; i < index; i++)
 		m_nodePointer = currentNode.next;
@@ -142,6 +183,12 @@ inline bool List<T>::insert(const T& value, int index)
 	//there is mabye a problem here
 	m_nodePointer->previous->next = &newNode;
 	m_nodePointer->previous = m_nodePointer->next;
+	
+	//Places the new node in the place that the current node is
+	newNode->nextNode = nodeAtGivenIndex;
+	newNode->previousNode = nodeAtGivenIndex->previousNode;
+	nodeAtGivenIndex->previousNode->nextNode = newNode;
+	nodeAtGivenIndex->previousNode = newNode;
 
 }
 
@@ -214,11 +261,15 @@ inline bool List<T>::isEmpty() const
 template<typename T>
 inline bool List<T>::getData(Iterator<T>& iter, int index)
 {
-	for (int i = 1; i < index; i++)
-	{
-		index = i;
-		return index;}
-	return false;
+	if (index < 0|| index < getLength())
+		return false;
+	
+	iter = begin();
+	
+	while(iter <index)
+		++iter;
+	
+	return true;
 }
 
 template<typename T>
@@ -231,29 +282,11 @@ inline int List<T>::getLength() const
 template<typename T>
 inline const List<T>& List<T>::operator=(const List<T>& otherList)
 {
-	return List(otherList);
+	destroy()//Clears this list
+	m_first = otherList.m_first; //Sets this list's first node to be the other list's first node
+	m_last = otherList.m_last; //Sets this list's last node to be the other list's last node
+	m_nodeCount = otherList.m_nodeCount; //Sets the node count to be equal to the other list's node count
 }
-
-//error on the c and d
-//template<typename T>
-//inline void List<T>::sort()
-//{
-//	T temp;
-//
-//	for (Node<int> c = m_nodeCount[m_first]; c < getLength(); c.next)
-//	{
-//		for (Node<int> b = m_nodeCount + 1; b < getLength(); b.next)
-//		{
-//			//have to change the c and b
-//			if ( b < m_nodeCount[c])
-//			{
-//				Node<int>temp = m_nodeCount[c];
-//				m_nodeCount[c] = m_nodeCount[b];
-//				m_nodeCount[] = temp;
-//			}
-//		}
-//	}
-//}
 
 template<typename T>
 inline void List<T>::sortItem()
@@ -280,4 +313,25 @@ inline void List<T>::sortItem()
 	for (m_nodeCount = 0; m_nodeCount < getLength();)
 		cout << &temparry[valueHolder->data] << endl;
 	////if i want to use inserten sort then i have to use a iterator to iterat throu the list
+	
+	
+	//this is mean to be revised by me
+	Iterator<T> iterator(m_firstNode);
+	T key = NULL;
+	int i = 1;
+	int j = 0;
+
+	for (Iterator<T> iteratorTwo(m_firstNode->nextNode); iteratorTwo != getLastNode(); ++iteratorTwo) {
+		i++;
+		iterator = Iterator<T>(m_firstNode);
+		for (int k = 0; k < i; k++)
+			++iterator;
+		j = i - 1;
+		while (j >= 0 && *iterator > key) {
+			remove(*iterator);
+			insert(*iterator, j + 1);
+			j--;
+			--iterator;
+		}
+		iterator = Iterator<T>(m_firstNode);
 }
