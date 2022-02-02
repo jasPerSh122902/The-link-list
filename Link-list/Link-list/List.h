@@ -275,6 +275,7 @@ inline void List<T>::sortItem()
 	//Node<int>* c, b, tempNode;
 	//Node<int>* temparry;//collection = []
 
+	//in bubble sort u need a array to sort through make it like m_first != m_last and that is the loop
 	//for (c = 0; c < 4; c++)
 	//{
 	//	for (b = c + 1; b < 4; b++)
