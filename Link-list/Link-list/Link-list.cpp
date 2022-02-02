@@ -9,8 +9,12 @@ int main()
     //it prints but not correcly
     m_list.pushFront(5);
     m_list.pushBack(6);
-    m_list.pushFront(7);
+    m_list.pushBack(9);
     m_list.pushBack(8);
+    m_list.pushBack(7);
+    m_list.pushBack(10);
+
+    m_list.sortItem();
     m_list.print();
 }
 

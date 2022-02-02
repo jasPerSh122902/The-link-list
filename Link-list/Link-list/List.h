@@ -213,23 +213,12 @@ template<typename T>
 inline void List<T>::print() const
 {
 	//The iter pointer may not work do figure this out
-	for (int i = 0; i < m_nodeCount; i++)
+	for (int i = m_first->data; i <= m_last->data;i++)
 	{
-		Iterator<int> iter = m_first;
-		if ( iter != m_last)
-		{
-			std::cout << *iter << std::endl;
-			iter.operator++();
-		}
-		
+		std::cout << i << std::endl;
+		//i = m_first->next->data;
+		m_first->data = m_first->next->data;
 	}
-	//bool printTrue = true;
-	//if (printTrue = true) {
-	//	Iterator<int> iter = m_first;
-	//std::cout <<*iter << std::endl;
-	//printTrue = false;
-	//}
-	
 }
 
 //there are errors
@@ -274,14 +263,30 @@ template<typename T>
 inline const List<T>& List<T>::operator=(const List<T>& otherList)
 {
 	//destroy();//Clears this list
-	m_first = otherList.m_first; //Sets this list's first node to be the other list's first node
-	m_last = otherList.m_last; //Sets this list's last node to be the other list's last node
+	m_first->data = otherList.m_first->data; //Sets this list's first node to be the other list's first node
+	m_last->data = otherList.m_last->data; //Sets this list's last node to be the other list's last node
 	m_nodeCount = otherList.m_nodeCount; //Sets the node count to be equal to the other list's node count
 }
 
 template<typename T>
 inline void List<T>::sortItem()
 {
+	////key = 0 j= 0
+	//Node<int>* c, b, tempNode;
+	//Node<int>* temparry;//collection = []
+
+	//for (c = 0; c < 4; c++)
+	//{
+	//	for (b = c + 1; b < 4; b++)
+	//	{
+	//		if (a[b] < a[c])
+	//		{
+	//			temp = a[c];
+	//			a[c] = a[b];
+	//			a[b] = temp;
+	//		}
+	//	}
+	//}
 	//key = 0 j= 0
 	Node<int>* valueHolder;
 	Node<int>* temparry;//collection = []
@@ -295,7 +300,7 @@ inline void List<T>::sortItem()
 		//start while loop
 		while (m_first >= 0 && &temparry[m_first->data] > valueHolder)//While j is greater than or equal to 0 value at j is greater than key
 		{
-			temparry[m_first->data] = temparry[m_first->data];	//set value at the index of j+1 to the value at index of j 
+			temparry[m_first->data + 1] = temparry[m_first->data];	//set value at the index of m_first +1 to the value at index of j 
 			m_first--;//decrement j
 		}//end while loop
 		temparry[m_first->data] = *valueHolder;//set collection at the index of j + 1 to be the key 

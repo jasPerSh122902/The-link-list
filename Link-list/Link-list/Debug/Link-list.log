@@ -1,2 +1,3 @@
 ﻿  Link-list.cpp
-  Link-list.vcxproj -> C:\Users\s218005\Documents\GitHub\The-bouble-link-list\Link-list\Debug\Link-list.exe
+C:\Users\s218005\Documents\GitHub\The-bouble-link-list\Link-list\Link-list\List.h(296): error C4700: uninitialized local variable 'temparry' used
+C:\Users\s218005\Documents\GitHub\The-bouble-link-list\Link-list\Link-list\List.h(309): error C4703: potentially uninitialized local pointer variable 'valueHolder' used
