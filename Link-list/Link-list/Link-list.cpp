@@ -3,19 +3,29 @@
 #include "Iterator.h"
 int main()
 {
-    List<int> m_list = List<int>();
-    Node<int> m_node = Node<int>();
-    Iterator<int> m_iter = Iterator<int>();
-    //it prints but not correcly
-    m_list.pushFront(5);
-    m_list.pushBack(6);
-    m_list.pushBack(9);
-    m_list.pushBack(8);
-    m_list.pushBack(7);
-    m_list.pushBack(10);
+	List<int> list;
+	list.pushFront(2);
+	list.pushFront(17);
+	list.pushFront(3);
+	list.pushFront(3);
+	list.pushFront(42);
+	list.sort();
+	list.print();
 
-    m_list.sortItem();
-    m_list.print();
+	list.remove(3);
+	list.print();
+
+	List<int> list2 = list;
+	//List<int> list3 = List<int>(list);
+
+	list2.print();
+	//list3.print();
+
+	list.destroy();
+	list.print();
+
+	//list3.remove(42);
+
+
+	system("pause");
 }
-
-
