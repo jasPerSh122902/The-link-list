@@ -272,8 +272,7 @@ inline void List<T>::sort()
 {
 	Iterator<T> IteratorFirst(m_first); //Iterator that points at the first node
 	T key = NULL; //Stores the value of the node that 
-	int i = 0;
-	int j = 0; 
+	int i = 0, j = 0; 
 
 	//Loops forwards through a list using an backwardsIterator
 	for (Iterator<T> forwardIterator(m_first->next); forwardIterator != end();) {
