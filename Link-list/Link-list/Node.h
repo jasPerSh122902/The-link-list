@@ -1,7 +1,7 @@
 #pragma once
 
 template <typename T>
-class Node
+struct Node
 {
 public:
 	Node();
@@ -22,5 +22,7 @@ inline Node<T>::Node()
 template<typename T>
 inline Node<T>::Node(T value)
 {
+	previous = nullptr;
+	next = nullptr;
 	data = value;
 }
