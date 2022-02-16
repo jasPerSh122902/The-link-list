@@ -3,7 +3,7 @@
 #include "Iterator.h"
 int main()
 {
-	List<int> list;
+	/*List<int> list;
 	list.pushFront(2);
 	list.pushFront(17);
 	list.pushFront(3);
@@ -31,6 +31,11 @@ int main()
 	list.destroy();
 	std::cout << "This is the first list but it is destroyed" << std::endl;
 	list.print();
+	std::cout << "This is the second list but te first list is destryoed" << std::endl;
+	list2.print();
+	std::cout << "This is the third list but te first list is destryoed" << std::endl;
+	list3.print();
 
-	system("pause");
+
+	system("pause");*/
 }
