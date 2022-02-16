@@ -74,11 +74,22 @@ inline void List<T>::destroy()
 	Node<T>* nextNode;
 
 	for (int i = 0; i < getLength(); i++) {
-		//Holds the current node's next in a temp variable
-		nextNode = currentNode->next; 
-		delete currentNode;
-		// sets the current node to be  the temp variable
-		currentNode = nextNode; 
+
+		if (currentNode = nullptr)
+		{
+			currentNode = currentNode->previous;
+			return;
+		}
+		
+		if (currentNode != nullptr)
+		{
+			//Holds the current node's next in a temp variable
+			nextNode = currentNode->next;
+			delete currentNode;
+			// sets the current node to be  the temp variable
+			currentNode = nextNode;
+		}
+		
 	}
 
 	initialize();
