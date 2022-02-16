@@ -1,5 +1,5 @@
 # link-List 
-
+# **Introduction**
 This program is meant to be a test to make and work with the idea of link list.
 
 $File$ : _Iterator.h_
@@ -7,6 +7,8 @@ $File$ : _Iterator.h_
 $Type$ : Tempate T
 
 Iterators are meant to go through the list how nodes in a link list. And this is meant to tbe a T typeName so you can put eny varible type in its places.
+
+# **Desgin**
 
 $Name$ :  Iterator()
 + Description : Is a baic contructor for the Iterator class.
