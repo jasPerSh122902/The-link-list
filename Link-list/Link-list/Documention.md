@@ -2,6 +2,12 @@
 # **Introduction**
 This program is meant to be a test to make and work with the idea of link list.
 
+* Successful creation of a project which implements and demonstrates a double-linked list
+
+    * The created program must demonstrate a custom sorting algorithm
+* Project submitted as an executable binary file that can be run external to an IDE.
+* Source code and project files also submitted for review
+
 $File$ : _Iterator.h_
 
 $Type$ : Tempate T
