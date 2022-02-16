@@ -48,6 +48,7 @@ $Name$ :  m_currentNode
 * Type : Node<T>*
 
 $File$ : _List.h_
+
 $Type% : Tempate T
 
 List is a holder for the nodes.
@@ -155,7 +156,8 @@ $Name$ :  m_last
 * Type : Node<T>*
 
 $File$ : _Node.h_
-$Type% : Tempate T
+
+$Type$ : Tempate T
 
 The Nodes hold information that can be pointers or eny viables
 
