@@ -1,3 +1,0 @@
-﻿  Link-list.cpp
-C:\Users\s218005\Documents\GitHub\The-bouble-link-list\Link-list\Link-list\List.h(218): warning C4715: 'List<int>::insert': not all control paths return a value
-  Link-list.vcxproj -> C:\Users\s218005\Documents\GitHub\The-bouble-link-list\Link-list\x64\Debug\Link-list.exe
