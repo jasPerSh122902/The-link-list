@@ -3,7 +3,7 @@
 #include "Iterator.h"
 int main()
 {
-	/*List<int> list;
+	List<int> list;
 	list.pushFront(2);
 	list.pushFront(17);
 	list.pushFront(3);
@@ -23,7 +23,7 @@ int main()
 	list2.print();
 	std::cout << "This is the fist list copied into a third list but made a instence of a list while useing the first list" << std::endl;
 	list3.print();
-	
+
 	list3.remove(42);
 	std::cout << "This is the third list but I removed 42 and this should not have 3" << std::endl;
 	list3.print();
@@ -31,11 +31,11 @@ int main()
 	list.destroy();
 	std::cout << "This is the first list but it is destroyed" << std::endl;
 	list.print();
-	std::cout << "This is the second list but te first list is destryoed" << std::endl;
+	std::cout << "This is the second list but the first list is destryoed" << std::endl;
 	list2.print();
-	std::cout << "This is the third list but te first list is destryoed" << std::endl;
+	std::cout << "This is the third list but the first list is destryoed" << std::endl;
 	list3.print();
 
 
-	system("pause");*/
+	system("pause");
 }

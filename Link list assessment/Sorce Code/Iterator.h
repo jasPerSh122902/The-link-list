@@ -24,27 +24,27 @@ inline Iterator<T>::Iterator()
 }
 
 template<typename T>
-inline Iterator<T>::Iterator(Node<T>* node) 
+inline Iterator<T>::Iterator(Node<T>* node)
 {
 	m_currentNode = node;
 }
 
 template<typename T>
-inline Iterator<T> Iterator<T>::operator++() 
+inline Iterator<T> Iterator<T>::operator++()
 {
 	m_currentNode = m_currentNode->next;
 	return Iterator<T>();
 }
 
 template<typename T>
-inline Iterator<T> Iterator<T>::operator--() 
+inline Iterator<T> Iterator<T>::operator--()
 {
 	m_currentNode = m_currentNode->previous;
 	return Iterator<T>();
 }
 
 template<typename T>
-inline const bool Iterator<T>::operator==(const Iterator<T>& iterator) 
+inline const bool Iterator<T>::operator==(const Iterator<T>& iterator)
 {
 	if (m_currentNode == iterator.m_currentNode)
 		return true;
