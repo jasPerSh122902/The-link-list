@@ -3,7 +3,7 @@
 #include "Iterator.h"
 int main()
 {
-	/*List<int> list;
+	List<int> list;
 	list.pushFront(2);
 	list.pushFront(17);
 	list.pushFront(3);
@@ -37,5 +37,5 @@ int main()
 	list3.print();
 
 
-	system("pause");*/
+	system("pause");
 }
