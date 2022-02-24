@@ -32,6 +32,9 @@ inline Iterator<T>::Iterator(Node<T>* node)
 template<typename T>
 inline Iterator<T> Iterator<T>::operator++()
 {
+	if (!m_currentNode)
+		return nullptr;
+
 	m_currentNode = m_currentNode->next;
 	return Iterator<T>();
 }
@@ -39,6 +42,9 @@ inline Iterator<T> Iterator<T>::operator++()
 template<typename T>
 inline Iterator<T> Iterator<T>::operator--()
 {
+	if (!m_currentNode)
+		return nullptr;
+
 	m_currentNode = m_currentNode->previous;
 	return Iterator<T>();
 }

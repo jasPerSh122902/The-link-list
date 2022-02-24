@@ -17,7 +17,15 @@ int main()
 	std::cout << "This is the first list but I removed 3" << std::endl;
 	list.print();
 
+	
 	List<int> list2 = list;
+	list2.pushFront(40);
+	list2.pushFront(79);
+	list2.pushFront(55);
+	list2.pushFront(2);
+	list2.pushFront(35);
+	list2.pushFront(66);
+	list2.sort();
 	List<int> list3 = List<int>(list);
 	std::cout << "This is the list list that is copyied into another list called list 2" << std::endl;
 	list2.print();
