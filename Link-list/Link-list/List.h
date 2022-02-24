@@ -48,11 +48,12 @@ template<typename T>
 inline List<T>::List(const List<T>& otherList)
 {
 	Node<T>* otherNode = otherList.m_first;
-
+	//this iteration is mean to copy data from a list to another list
 	for (int i = 0; i < otherList.getLength(); i++)
 	{
+		//uses the insert to ge a data while making the int i as a index
 		insert(otherNode->data, i);
-		otherNode = otherNode->next;
+		otherNode = otherNode->next; // sets the othernode to the next
 	}
 }
 
@@ -65,6 +66,7 @@ inline List<T>::~List()
 template<typename T>
 inline void List<T>::print() const
 {
+	//check to see if the list is null
 	if (m_first == nullptr)
 		return;
 	for (Iterator<T> iterator(m_first); iterator != end(); ++iterator) {
@@ -301,14 +303,16 @@ template<typename T>
 inline const List<T>& List<T>::operator=(const List<T>& otherList)
 {
 	destroy(); //Clears this list
+	//makes a pointer called other node and give it the value of the others list first
 	Node<T>* otherNode = otherList.m_first;
 
 	for (int i = 0; i < otherList.getLength(); i++)
 	{
+		//uses the insert to ge a data while making the int i as a index
 		insert(otherNode->data, i);
-		otherNode = otherNode->next;
+		otherNode = otherNode->next;//sets the other node to the next
 	}
-
+	//return a pointer to this(other node)
 	return *this;
 }
 
