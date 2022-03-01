@@ -1,18 +1,18 @@
 # link-List 
 # **Introduction**
-This program is meant to be a test to make and work with the idea of link list.
+This program is meant to be a test to make the data structure link list. 
 
-* Successful creation of a project which implements and demonstrates a double-linked list
+*Successful creation of a project which implements and demonstrates a double-linked list.
 
     * The created program must demonstrate a custom sorting algorithm
 * Project submitted as an executable binary file that can be run external to an IDE.
-* Source code and project files also submitted for review
+* Source code and project files are also submitted for review.
 
 $File$ : _Iterator.h_
 
 $Type$ : Tempate T
 
-Iterators are meant to go through the list how nodes in a link list. And this is meant to tbe a T typeName so you can put eny varible type in its places.
+Iterators are meant to go through the list nodes in a link list and hold the data of those nodes. 
 
 # **Desgin**
 
@@ -22,31 +22,31 @@ $Name$ :  Iterator()
 
 
 $Name$ :  Iterator(Node<T>* node)
-+ Description : Is a baic contructor for the Iterator class that takes in a Node pointer.
++ Description : Is a contructor for the Iterator class that takes in a Node pointer.
 * Visualibility : public
 
 $Name$ :  operator ++()
-+ Description : The ++ operator is meant to add 1 to  a int. I add the ability to add a node and iterators.
++ Description : Add the ability to add a node and iterators.
 * Visualibility : public
 * Type : Iterator<T>
 
 $Name$ :  operator --()
-+ Description : The -- operator is meant to subtract 1 to  a int. I add the ability to subtract a node and iterators.
++ Description : Add the ability to subtract a node and iterators.
 * Visualibility : public
 * Type : Iterator<T>
 
 $Name$ :  operator ==(const Iterator<T>& iterator)
-+ Description : The == operator is meant to ask a question that compares if the two sides are equal to each other. I add the ability to make a node and iterators equal each other.
++ Description : Makes a node and iterators equal each other.
 * Visualibility : public
 * Type : const bool
 
 $Name$ :  operator !=(const Iterator<T>& iterator)
-+ Description : The != operator is meant to see if the two sides are not equal. I add the ability to make a node and iterators run the check to see if they are not equal.
++ Description : Makes a node and iterators run the check to see if they are not equal.
 * Visualibility : public
 * Type : const bool
 
 $Name$ :  operator *()
-+ Description : I added the ability to dereference eny variable.
++ Description : Dereference eny variable.
 * Visualibility : public
 * Type : T
 
@@ -59,14 +59,14 @@ $File$ : _List.h_
 
 $Type% : Tempate T
 
-List is a holder for the nodes.
+List is a holder for the nodes. And it works like a array.
 
 $Name$ :  List()
 + Description : Is a baic contructor for the Listclass.
 * Visualibility : public
 
 $Name$ :  List(const List<T>* otherList)
-+ Description : Is a baic contructor for the List class that takes in a Lother list.
++ Description : Is a contructor for the List class that takes in aother list.
 * Visualibility : public
 
 $Name$ :  ~List()
@@ -167,14 +167,14 @@ $File$ : _Node.h_
 
 $Type$ : Tempate T
 
-The Nodes hold information that can be pointers or eny viables
+The Nodes hold information that can be pointers or any variables.
 
 $Name$ :  Node()
 + Description : Is a baic contructor for the Node class.
 * Visualibility : public
 
 $Name$ :  List(T value)
-+ Description : Is a baic contructor for the Node class that takes in a  value.
++ Description : Is a contructor for the Node class that takes in a  value.
 * Visualibility : public
 
 $Name$ :  Next
